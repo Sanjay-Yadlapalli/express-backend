@@ -9,6 +9,14 @@ app.use(
 );
 app.use(express.json());
 
+app.get("/", async (req, res) => {
+  try {
+    res.send({message: "WELCOME, API"})
+  } catch (e) {
+    res.status(401).send({ error_message: e.message });
+  }
+});
+
 app.get("/mine", async (req, res) => {
   try {
     const mine = {
